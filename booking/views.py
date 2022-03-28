@@ -5,8 +5,8 @@ from django.shortcuts import render
 #from django.http import HttpResponse
 
 from rest_framework import viewsets
-from .serializers import VacancySerializer, BookingSerializer
-from .models import Vacancy, Booking
+from .serializers import VacancySerializer, BookingSerializer,UserSerializer
+from .models import Vacancy, Booking,User
 
 class VacandyViewSet(viewsets.ModelViewSet):
     queryset = Vacancy.objects.all().order_by('date')
@@ -45,3 +45,44 @@ def s_logout(request):
     request.session.flush() # 删除一条记录包括(session_key session_data expire_date)三个字段
     return redirect('/session_login/')
 """
+
+class UserAPI(APIView):
+
+    def post(self, request):
+        # query_params=GET
+        action = request.query_params.get('action')
+        if action == 'register':
+            return self.do_register(request)
+
+        elif action == 'login':
+            return self.do_login(request)
+
+    def do_register(self, request):
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.error_messages)
+
+    def do_login(self, request):
+        username = request.data.get('username')
+        password = request.data.get('password')
+
+        try:
+            user = UserModel.objects.get(username=username)
+        except Exception as e:
+            return Response({'msg': e})
+
+        if not user.verify_password(password):
+            return Response({'msg': 'password error!'})
+
+        token = uuid.uuid4().hex
+        print(token, uuid.uuid4())
+        cache.set(token, user.id, timeout=60 * 60)
+        data = {
+            'msg': 'login success!',
+            'status': status.HTTP_200_OK,
+            'token': token,
+        }
+
+        return Response(data)
