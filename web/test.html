@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>無標題文件</title>
+<script src="jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+<h1>Beluga Design Studio</h1>
+<p><!--<img src="images/PIC.jpg" width="700" height="500"  alt=""/>--></p>
+<script>
+    $(function(){
+        $.ajax({type: "GET",url: "http://127.0.0.1:8000/api/booking/", success: function(result){
+            console.log(result)
+        }});
+    })
+</script>
+</body>
+</html>
