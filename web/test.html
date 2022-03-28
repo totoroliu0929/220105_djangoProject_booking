@@ -16,5 +16,71 @@
         }});
     })
 </script>
+
+
+class UserModel(models.Model):
+    username = models.CharField(max_length=32, unique=True)
+    password = models.CharField(max_length=256)
+
+    def verify_password(self, password):
+        return self.password == password
+序列化：
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserModel
+        fields = 'id', 'username', 'password'
+视图函数：
+
+
+class UserAPI(APIView):
+
+    def post(self, request):
+        # query_params=GET
+        action = request.query_params.get('action')
+        if action == 'register':
+            return self.do_register(request)
+
+        elif action == 'login':
+            return self.do_login(request)
+
+    def do_register(self, request):
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.error_messages)
+
+    def do_login(self, request):
+        username = request.data.get('username')
+        password = request.data.get('password')
+
+        try:
+            user = UserModel.objects.get(username=username)
+        except Exception as e:
+            return Response({'msg': e})
+
+        if not user.verify_password(password):
+            return Response({'msg': 'password error!'})
+
+        token = uuid.uuid4().hex
+        print(token, uuid.uuid4())
+        cache.set(token, user.id, timeout=60 * 60)
+        data = {
+            'msg': 'login success!',
+            'status': status.HTTP_200_OK,
+            'token': token,
+        }
+
+        return Response(data)
+url:
+
+app_name = 'app'
+
+urlpatterns = [
+    path('users/', UserAPI.as_view()),
+]
+
+
 </body>
 </html>
