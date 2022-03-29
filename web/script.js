@@ -16,7 +16,7 @@ $(function(){
     })
 
     $("label.radio").on('click',function(){
-        $(this).addClass("action").siblings().removeClass("action")
+        $(this).addClass("action").find("input").prop('checked',true).end().siblings().removeClass("action")
     })
 
 
@@ -36,9 +36,9 @@ $(function(){
         success: function(res){
             console.log('ajax result:')
             console.log(res)
-            let sex = (res.sex = true)?'先生':'小姐'
+            let sex = (res.sex == true)?'先生':'小姐'
             let date = `${res.date.substring(4,6)}/${res.date.substring(6,8)}`
-            let time = (res.time = 1)?'午餐時段':'晚餐時段'
+            let time = (res.time == 1)?'午餐時段':'晚餐時段'
             let message = `${res.name} ${sex} <br>
                 您在 <span>${date}</span> ${time}<br> 
                 預訂了 <span>${res.number}</span> 位用餐<br>

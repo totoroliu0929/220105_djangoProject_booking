@@ -18,4 +18,5 @@ router.register(r'Inquire',views.BookingInquireViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('api/', include(router.urls)),
+    path('Inquire/', views.BookingInquireViewSet.as_view({'get': 'list'}) ),
 ]

@@ -11,6 +11,7 @@ from rest_framework.response import Response
 
 from .serializers import VacancySerializer, BookingSerializer,UserSerializer,BookingInquireSerializer
 from .models import Vacancy, Booking,User
+from django.forms import ModelForm
 
 class VacandyViewSet(viewsets.ModelViewSet):
     queryset = Vacancy.objects.all().order_by('date')
@@ -21,6 +22,11 @@ class BookingViewSet(viewsets.ModelViewSet):
     serializer_class = BookingSerializer
 
 class BookingInquireViewSet(viewsets.ModelViewSet):
-    queryset = Booking.objects.filter(mobile__exact="0912345678").order_by('date')
+    #id = request.GET.get('id', 0)
+    
+    lookup_field = "mobile"
+    queryset = Booking.objects.all().order_by('date')
+    #queryset = Booking.objects.filter(mobile__exact="0912345678").order_by('date')
     serializer_class = BookingInquireSerializer
+
 
