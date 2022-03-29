@@ -10,23 +10,39 @@
 </head>
 <body>
   <main>
+    <h1>紅酒俱樂部<br>&nbsp;訂位服務</h1>
     <form action="http://127.0.0.1:8000/api/Booking/" method="post">
-      <div class='booking-box booking-2nd calendar' id='calendar'></div>
+      <div class="booking-box booking-1st">
+        <h2>確認人數</h2>
+        <label><input type="number" class="number" name="number"  min="0" value="5"></label><br/>
+        <input type="button" class="nextto2" value="下一步">
+      </div>
+      
+      <div class='booking-box booking-2nd'>
+        <h2>選擇日期</h2>
+        <div class="calendar" id="calendar"></div>
+      </div>
       <div class="booking-box booking-3rd">
+        <h2>選擇時段</h2>
         <input type="hidden" class="date" name="date" value="">
         <input type="hidden" class="user" name="user" value="111">
-        <label>時段：<input type="radio" class="time" name="time" value="1" checked>中午　　　</label><label><input type="radio" class="time" name="time" value="2">晚上　　　</label><br/>
-        <label>姓名：<input type="text" class="name" name="name" value="totoro"></label><br/>
-        <label>性別：<input type="radio" class="sex" name="sex" value="true" checked>先生　　　</label><label><input type="radio" class="sex" name="sex" value="false">小姐　　　</label><br/>
-        <label>手機：<input type="tel" class="mobile" name="mobile" value="0987654321"></label><br/>
-        <label>人數：<input type="number" class="number" name="number"  min="0" value="5"></label><br/>
-        <!--<input type="button" class="prev" value="上一步">-->
-        <input type="button" class="next" value="下一步">
+        <label class="radio action"><input type="radio" class="time" name="time" value="1" checked>中午</label>
+        <label class="radio"><input type="radio" class="time" name="time" value="2">晚上</label><br/>
+        <input type="button" class="nextto4" value="下一步">
       </div>
       <div class="booking-box booking-4th">
-        <label>牛排：<input type="number" class="steak" name="steak"  min="0" value="2"></label><br/>
-        <label>魚排：<input type="number" class="fish" name="fish"  min="0" value="3"></label><br/>
-        <label>雞排：<input type="number" class="chicken" name="chicken"  min="0" value="0"></label><br/>
+        <h2>留下聯絡資訊</h2>
+        <label>姓名<br><input type="text" class="name long" name="name" value="totoro"></label><br/>
+        <label class="radio action"><input type="radio" class="sex" name="sex" value="true" checked>先生</label>
+        <label class="radio"><input type="radio" class="sex" name="sex" value="false">小姐</label><br/>
+        <label>手機<br><input type="tel" class="mobile long" name="mobile" value="0987654321"></label><br/>
+        <input type="button" class="nextto5" value="下一步">
+      </div>
+      <div class="booking-box booking-5th">
+        <h2>選擇餐點</h2>
+        <label>牛排<br/><input type="number" class="steak short" name="steak"  min="0" value="2"></label>
+        <label>魚排<br/><input type="number" class="fish short" name="fish"  min="0" value="3"></label>
+        <label>雞排<br/><input type="number" class="chicken short" name="chicken"  min="0" value="0"></label><br/>
         <input type="button" class="AJAXbtn" value="訂位">
       </div>
       <div class="booking-box booking-success">
@@ -36,19 +52,3 @@
 <script type='text/javascript' src='calendar.js'></script>
 </body>
 </html>
-
-
-
-<!--
-chicken: 0
-date: "20220331"
-fish: 3
-mobile: "0987654321"
-name: "totoro"
-number: 5
-sex: false
-steak: 2
-time: 2
-url: "http://127.0.0.1:8000/api/Booking/6/"
-user: 11
--->

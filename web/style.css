@@ -1,15 +1,62 @@
 /* 整體設定 */
 *{margin:0px;padding:0px;}
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
+:root {
+  --color1: #804D25;
+  --color2: #DDAB78;
+  --color3: #4E1039;
+}
+
 /*頁面設定*/
+body{
+  background-color: var(--color3);
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
 main{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0 auto;
-  width: 280px;
+  width: 100vw;
+  height: 95vh;
+  background: var(--color1) url("./bg.jpg") no-repeat center center;
+  background-size: cover;
+}
+h1{
+  position: absolute;
+  top: -1vh;
+  left: -3vh;
+  color: rgba(255,255,255,0.5);
+  font-size: 12vw;
+  z-index: 0;
+  line-height: 100%;
+  letter-spacing: -1vw;
+  text-shadow: 0 0 5px rgb(0 0 0 / 20%);
+}
+h2{
+  text-align: center;
+  margin: 10px 0 20px;
+  font-weight: normal;
+}
+form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36vw;
+  height: 36vw;
+  border-radius: 18vw;
+  background-color: rgba(221, 171, 120,.8);
+  box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+  z-index: 1;
+  margin-left: 15vw;
 }
 .booking-box{
   display: none;
 }
-.booking-2nd{
+.booking-1st{
   display: block;
 }
 
@@ -18,13 +65,65 @@ main{
   text-align: center;
   line-height: 40px;
 }
+.booking-success span{
+  font-size: 32px;
+}
+label,input{
+  margin-bottom: 10px;
+  display:inline-block;
+  text-align: center;
+}
+label.radio{
+  width: auto;
+  border: 1px solid #000;
+  border-radius: 53px;
+  text-align: center;
+  padding: 10px 30px;
+  font-size: 16px;
+}
+label.action{
+  background-color: var(--color3);
+  color: #fff;
+}
+input{
+  font-size: 32px;
+  background: transparent;
+    border: 0;
+    border-bottom: 1px solid #000;
+    text-align: center;
+    width: 100px;
+  margin-top: 5px;
+}
+input[type=button]{
+  letter-spacing: 10px;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 16px;
+  padding-bottom: 5px;
+  display: block;
+  width: auto;
+  margin: 20px auto;
+  cursor: pointer;
+}
+input[type=radio]{
+  width: auto;
+  display: none;
+}
+input.long{
+  font-size: 24px;
+  width: 200px;
+}
+input.short{
+  width: 50px;
+  margin: 10px;
+}
 
 /**
  * 設定日曆的大小
  */
 .calendar{
   width: 280px;
-  height: 400px;
+  height: 280px;
   display: block;
 }
 
@@ -52,7 +151,7 @@ main{
   height: 0px;
   border-left: 0px;
   border-top: 6px solid transparent;
-  border-right: 8px solid #999;
+  border-right: 8px solid var(--color1);
   border-bottom: 6px solid transparent;
   cursor: pointer;
 }
@@ -69,7 +168,7 @@ main{
   height: 0px;
   border-right: 0px;
   border-top: 6px solid transparent;
-  border-left: 8px solid #999;
+  border-left: 8px solid var(--color1);
   border-bottom: 6px solid transparent;
   cursor: pointer;
 }
@@ -92,7 +191,7 @@ main{
 
 /* 當前天 顏色特殊顯示 */
 .currentDay {
-  color: red;
+  color: var(--color1);
 }
 
 /* 本月 文字顏色 */
@@ -108,19 +207,20 @@ main{
 
 /*歷史天*/
 .finished{
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 .calendar-table td:not(.finished):hover{
   color: #fff;
   cursor: pointer;
   position: relative;
+  z-index: 0;
 }
 .calendar-table td:not(.finished):hover::before{
   height: 30px;
   width: 30px;
   content: "";
-  background-color: blue;
+  background-color: var(--color3);
   position: absolute;
   top:5px;
   left: 5px;

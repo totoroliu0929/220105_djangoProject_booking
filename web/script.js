@@ -1,8 +1,22 @@
 $(function(){
 
-    $(".next").on('click',function(){
+    $(".nextto2").on('click',function(){
+        $(".booking-1st").hide()
+        $(".booking-2nd").show()
+    })
+
+    $(".nextto4").on('click',function(){
         $(".booking-3rd").hide()
         $(".booking-4th").show()
+    })
+
+    $(".nextto5").on('click',function(){
+        $(".booking-4th").hide()
+        $(".booking-5th").show()
+    })
+
+    $("label.radio").on('click',function(){
+        $(this).addClass("action").siblings().removeClass("action")
     })
 
 
@@ -15,7 +29,6 @@ $(function(){
     // 打包表單資料
     function post(){
     var datas = $("form").serializeArray()
-    //datas.find((obj)=>obj.name=='json').value="true"
     $.ajax({
         url:"http://127.0.0.1:8000/api/Booking/",
         method:"post",
@@ -24,16 +37,16 @@ $(function(){
             console.log('ajax result:')
             console.log(res)
             let sex = (res.sex = true)?'先生':'小姐'
-            let date = `${res.date.substr(4,6)} / ${res.date.substr(6,8)}`
+            let date = `${res.date.substring(4,6)}/${res.date.substring(6,8)}`
             let time = (res.time = 1)?'午餐時段':'晚餐時段'
             let message = `${res.name} ${sex} <br>
-                您在 ${date} ${time}<br> 
-                預訂了 ${res.number} 位用餐<br>
+                您在 <span>${date}</span> ${time}<br> 
+                預訂了 <span>${res.number}</span> 位用餐<br>
                 預約的餐點為：<br>
-                牛排 ${res.steak} 份、魚排 ${res.fish} 份、雞排 ${res.chicken} 份<br>
-                已預約成功
+                牛排 <span>${res.steak}</span> 份、魚排 <span>${res.fish}</span> 份、雞排 <span>${res.chicken}</span> 份<br>
+                <h2>已預約成功</h2>
                 `
-            $(".booking-4th").hide()
+            $(".booking-5th").hide()
             $(".booking-success").html(message).show()
         }
     })

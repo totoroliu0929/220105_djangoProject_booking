@@ -48,19 +48,3 @@ class Booking(models.Model):
         else:
             time = "晚上"
         return f"{self.name} 在 {self.date[4:6]} / {self.date[6:8]} {time} 預訂{self.number}位"
-
-'''
-class Post(models.Model):
-    # related to User
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    # attributes
-    content = models.fields.TextField(blank=True)
-    liked = models.fields.PositiveIntegerField(default=0)
-
-    created = models.fields.DateTimeField(default=timezone.now)
-    last_updated = models.fields.DateTimeField(default=timezone.now)
-
-    def __str__(self):
-        return str(self.author) + ":" + str(self.content)
-'''

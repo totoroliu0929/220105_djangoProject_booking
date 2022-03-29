@@ -19,14 +19,4 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('booking.urls')),
-    #path('accounts/', include('django.contrib.auth.urls')),
 ]
-
-"""
-from session import views as session_views
-urlpatterns = [
-    path('session_login/', session_views.login),
-    path('s_index/', session_views.s_index),
-    path('s_logout/', session_views.s_logout),
-]
-"""

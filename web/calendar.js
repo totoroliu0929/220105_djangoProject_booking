@@ -98,9 +98,6 @@
           _tds[i].className = 'currentDay';
         }else if(_thisDayStr.substr(0, 6) == getDateStr(_firstDay).substr(0, 6)) {
           _tds[i].className = 'currentMonth';  // 當前月
-          /*if (_thisDayStr.substr(0, 8) > getDateStr(_firstDay).substr(0, 8)) {
-            _tds[i].classList.add("finished");  // 當前月歷史天
-          }*/
         }else {    // 其他月
           _tds[i].className = 'otherMonth';
         }
