@@ -92,3 +92,37 @@ class UserAPI(APIView):
 
         return Response(data)
 '''
+'''
+#https://ithelp.ithome.com.tw/articles/10262488?sc=iThelpR
+from datetime import datetime
+import json
+import uuid
+from django.contrib.auth.models import User
+from django.http.response import JsonResponse
+from django.views.decorators.csrf import csrf_protect
+from user.models import UserProfile
+from django.contrib import auth     #新增
+from django.contrib.sessions.models import Session#新增
+
+#@csrf_protect
+def login(request):             #登入
+    if request.method == "POST":
+        data = json.loads(bytes.decode(request.body,"utf-8"))
+        try:
+            account = data['account']
+            password = data['password']
+            auth_obj = auth.authenticate(username=account,password=password)#驗證帳號對錯
+            if auth_obj is not None:    #驗證成功
+                if request.user.is_authenticated == False:#驗證是否有帳號已登入/新增開始
+                    auth_obj.check_password(password) #檢查輸入與驗證返回user對象密碼是否相符
+                    request.session.create()
+                    auth.login(request,auth_obj)
+                    message = {"status": "登入成功"}
+                else:
+                    message = {"status":"帳號已登入"}
+            else:
+                message = {"status":"帳號密碼輸入錯誤"}
+        except :
+            message = {"status": "登入失敗"}
+        return JsonResponse(message)
+'''
