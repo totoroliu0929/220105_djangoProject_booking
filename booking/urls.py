@@ -13,6 +13,7 @@ router = routers.DefaultRouter()
 router.register(r'Booking',views.BookingViewSet)
 router.register(r'Vacancy',views.VacandyViewSet)
 
+
 urlpatterns = [
     path('', include(router.urls)),
     path('api/', include(router.urls)),
