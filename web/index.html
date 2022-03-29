@@ -1,13 +1,54 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset='utf-8'>
-  <link rel='stylesheet' href='style.css' />  
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='style.css' />
+  <script src="jquery-3.4.1.min.js"></script>
+  <script src="script.js"></script>
   <title>demo</title>
 </head>
 <body>
-  <div class='calendar' id='calendar'></div>
-  <script type='text/javascript' src='calendar.js'></script>
-https://ithelp.ithome.com.tw/articles/10212462?sc=pt
+  <main>
+    <form action="http://127.0.0.1:8000/api/Booking/" method="post">
+      <div class='booking-box booking-2nd calendar' id='calendar'></div>
+      <div class="booking-box booking-3rd">
+        <input type="hidden" class="date" name="date" value="">
+        <input type="hidden" class="user" name="user" value="111">
+        <label>時段：<input type="radio" class="time" name="time" value="1" checked>中午　　　</label><label><input type="radio" class="time" name="time" value="2">晚上　　　</label><br/>
+        <label>姓名：<input type="text" class="name" name="name" value="totoro"></label><br/>
+        <label>性別：<input type="radio" class="sex" name="sex" value="true" checked>先生　　　</label><label><input type="radio" class="sex" name="sex" value="false">小姐　　　</label><br/>
+        <label>手機：<input type="tel" class="mobile" name="mobile" value="0987654321"></label><br/>
+        <label>人數：<input type="number" class="number" name="number"  min="0" value="5"></label><br/>
+        <!--<input type="button" class="prev" value="上一步">-->
+        <input type="button" class="next" value="下一步">
+      </div>
+      <div class="booking-box booking-4th">
+        <label>牛排：<input type="number" class="steak" name="steak"  min="0" value="2"></label><br/>
+        <label>魚排：<input type="number" class="fish" name="fish"  min="0" value="3"></label><br/>
+        <label>雞排：<input type="number" class="chicken" name="chicken"  min="0" value="0"></label><br/>
+        <input type="button" class="AJAXbtn" value="OK">
+      </div>
+      <div class="booking-box booking-success">
+      </div>
+    </form>
+  </main>
+<script type='text/javascript' src='calendar.js'></script>
 </body>
 </html>
+
+
+
+<!--
+chicken: 0
+date: "20220331"
+fish: 3
+mobile: "0987654321"
+name: "totoro"
+number: 5
+sex: false
+steak: 2
+time: 2
+url: "http://127.0.0.1:8000/api/Booking/6/"
+user: 11
+-->

@@ -1,10 +1,16 @@
+import uuid
+
+from django.core.cache import cache
 from django.shortcuts import render
 
 # Create your views here.
 
 #from django.http import HttpResponse
 
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from .serializers import VacancySerializer, BookingSerializer,UserSerializer
 from .models import Vacancy, Booking,User
 
@@ -46,6 +52,7 @@ def s_logout(request):
     return redirect('/session_login/')
 """
 
+
 class UserAPI(APIView):
 
     def post(self, request):
@@ -69,7 +76,7 @@ class UserAPI(APIView):
         password = request.data.get('password')
 
         try:
-            user = UserModel.objects.get(username=username)
+            user = User.objects.get(username=username)
         except Exception as e:
             return Response({'msg': e})
 

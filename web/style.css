@@ -1,11 +1,29 @@
 /* 整體設定 */
 *{margin:0px;padding:0px;}
 
+/*頁面設定*/
+main{
+  margin: 0 auto;
+  width: 280px;
+}
+.booking-box{
+  display: none;
+}
+.booking-2nd{
+  display: block;
+}
+
+.booking-success{
+  display: block;
+  text-align: center;
+  line-height: 40px;
+}
+
 /**
  * 設定日曆的大小
  */
 .calendar{
-  width: 240px;
+  width: 280px;
   height: 400px;
   display: block;
 }
@@ -65,9 +83,11 @@
 }
 
 /* 表格行高 */
-.calendar-table tr{
-  height: 30px;
-  line-height: 30px;
+.calendar-table td{
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  text-align: center;
 }
 
 /* 當前天 顏色特殊顯示 */
@@ -77,11 +97,33 @@
 
 /* 本月 文字顏色 */
 .currentMonth {
-  color: #999;
+  color: #000;
 }
 
 /* 其他月顏色 */
 .otherMonth{
   color: #ede;
   opacity: 0;
+}
+
+/*歷史天*/
+.finished{
+  opacity: 0.5;
+}
+
+.calendar-table td:not(.finished):hover{
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+}
+.calendar-table td:not(.finished):hover::before{
+  height: 30px;
+  width: 30px;
+  content: "";
+  background-color: blue;
+  position: absolute;
+  top:5px;
+  left: 5px;
+  border-radius: 15px;
+  z-index: -1;
 }

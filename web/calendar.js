@@ -1,4 +1,5 @@
-(function(){
+
+  selectDate = (function(){
     /*
      * 用於記錄日期，顯示的時候，根據dateObj中的日期的年月顯示
      */
@@ -92,18 +93,18 @@
         var _thisDayStr = getDateStr(_thisDay);
         _tds[i].innerText = _thisDay.getDate();
         //_tds[i].data = _thisDayStr;
-        _tds[i].setAttribute('data', _thisDayStr);
+        _tds[i].setAttribute('data-date', _thisDayStr);
         if(_thisDayStr == getDateStr(new Date())) {    // 當前天
           _tds[i].className = 'currentDay';
         }else if(_thisDayStr.substr(0, 6) == getDateStr(_firstDay).substr(0, 6)) {
           _tds[i].className = 'currentMonth';  // 當前月
-          if (_thisDayStr.substr(7, 8) > getDateStr(_firstDay).substr(7, 8)) {
+          /*if (_thisDayStr.substr(0, 8) > getDateStr(_firstDay).substr(0, 8)) {
             _tds[i].classList.add("finished");  // 當前月歷史天
-          }
+          }*/
         }else {    // 其他月
           _tds[i].className = 'otherMonth';
         }
-        if (list.indexOf(_thisDayStr) > -1) {
+        if (_thisDayStr <= getDateStr(new Date())) {
           _tds[i].classList.add("finished")
         }
       }
@@ -175,4 +176,14 @@
       _d = (_d > 9) ? ("" + _d) : ("0" + _d);
       return _year + _month + _d;
     }
+
+    $("td").on('click',function(){
+      if($(this).hasClass("finished")){
+        return
+      }
+      $(".booking-2nd").hide()
+      $(".booking-3rd").show()
+      $(".date").val($(this).data("date"))
+      console.log($(".date").val())
+    })
   })();
