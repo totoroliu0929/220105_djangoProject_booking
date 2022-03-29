@@ -12,6 +12,11 @@ class BookingSerializer(serializers.HyperlinkedModelSerializer):
         model = Booking
         fields = '__all__'
 
+class BookingInquireSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Booking
+        fields = '__all__'
+
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User

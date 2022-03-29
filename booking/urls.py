@@ -12,10 +12,10 @@ urlpatterns = [
 router = routers.DefaultRouter()
 router.register(r'Booking',views.BookingViewSet)
 router.register(r'Vacancy',views.VacandyViewSet)
+router.register(r'Inquire',views.BookingInquireViewSet)
 
 
 urlpatterns = [
     path('', include(router.urls)),
     path('api/', include(router.urls)),
-    #path('user/',include("user.urls"))
 ]
