@@ -87,12 +87,12 @@ label.action{
   color: #fff;
 }
 input{
-  font-size: 48px;
+  font-size: 96px;
   background: transparent;
     border: 0;
     border-bottom: 1px solid #000;
     text-align: center;
-    width: 100px;
+    width: 120px;
   margin-top: 5px;
 }
 input[type=button]{
@@ -119,8 +119,9 @@ input.long{
   width: 200px;
 }
 input.short{
-  width: 50px;
-  margin: 10px;
+  width: 100px;
+  margin: 10px 5px;
+  letter-spacing: -5px;
 }
 
 
