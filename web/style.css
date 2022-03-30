@@ -12,6 +12,7 @@
 body{
   background-color: var(--color3);
   font-family: 'Noto Sans TC', sans-serif;
+  overflow-x: hidden;
 }
 
 main{
@@ -36,7 +37,7 @@ h1{
   letter-spacing: -1vw;
   text-shadow: 0 0 5px rgb(0 0 0 / 20%);
 }
-h2{
+h3{
   text-align: center;
   margin: 10px 0 20px;
   font-weight: normal;
@@ -120,6 +121,67 @@ input.long{
 input.short{
   width: 50px;
   margin: 10px;
+}
+
+
+article {
+  color: #fff;
+  width: 80vw;
+  margin: 50px auto;
+  /* left: 0; */
+  overflow: auto;
+}
+h2{
+  width: 50%;
+  font-size: 64px;
+  font-weight: normal;
+  text-align: right;
+  padding-right: 50px;
+  opacity: 0.8;
+  line-height: 64px;
+}
+
+h2, ul {
+  float: left;
+}
+ul{
+  list-style: none;
+  min-height: 155px;
+  padding: 0 50px;
+  border-left: 1px solid rgba(255,255,255,0.5); 
+}
+li{
+  padding-bottom: 20px;
+}
+li span {
+  font-weight: bold;
+}
+article label,article input{
+  font-size: 16px;
+  color: #fff;
+}
+article input[type=text]{
+  border: 1px solid #fff;
+  width: 120px;
+  text-align: center;
+  margin: 0;
+  margin-left: 10px;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+}
+article input[type=button]{
+  margin: 0;
+  display: inline-block;
+  height: 22px;
+  vertical-align: middle;
+  font-size: 12px;
+  letter-spacing: 0;
+  padding: 0 5px;
+  color:var(--color3);
+  background-color: #fff;
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+  border-width: 0;
 }
 
 /**

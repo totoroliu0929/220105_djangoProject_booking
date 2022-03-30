@@ -6,24 +6,24 @@
   <link rel='stylesheet' href='style.css' />
   <script src="jquery-3.4.1.min.js"></script>
   <script src="script.js"></script>
-  <title>demo</title>
+  <title>紅酒俱樂部</title>
 </head>
 <body>
   <main>
     <h1>紅酒俱樂部<br>&nbsp;訂位服務</h1>
     <form action="http://127.0.0.1:8000/api/Booking/" method="post">
       <div class="booking-box booking-1st">
-        <h2>確認人數</h2>
-        <label><input type="number" class="number" name="number"  min="0" value="5"></label><br/>
+        <h3>確認人數</h3>
+        <label><input type="number" class="number" name="number"  min="0" value="0"></label><br/>
         <input type="button" class="nextto2" value="下一步">
       </div>
       
       <div class='booking-box booking-2nd'>
-        <h2>選擇日期</h2>
+        <h3>選擇日期</h3>
         <div class="calendar" id="calendar"></div>
       </div>
       <div class="booking-box booking-3rd">
-        <h2>選擇時段</h2>
+        <h3>選擇時段</h3>
         <input type="hidden" class="date" name="date" value="">
         <input type="hidden" class="user" name="user" value="111">
         <label class="radio"><input type="radio" class="time" name="time" value="1">中午</label>
@@ -31,17 +31,17 @@
         <input type="button" class="nextto4" value="下一步">
       </div>
       <div class="booking-box booking-4th">
-        <h2>留下聯絡資訊</h2>
-        <label>姓名<br><input type="text" class="name long" name="name" value="totoro"></label><br/>
+        <h3>留下聯絡資訊</h3>
+        <label>姓名<br><input type="text" class="name long" name="name" value=""></label><br/>
         <label class="radio"><input type="radio" class="sex" name="sex" value="true">先生</label>
         <label class="radio"><input type="radio" class="sex" name="sex" value="false">小姐</label><br/>
-        <label>手機<br><input type="tel" class="mobile long" name="mobile" value="0987654321"></label><br/>
+        <label>手機<br><input type="tel" class="mobile long" name="mobile" value=""></label><br/>
         <input type="button" class="nextto5" value="下一步">
       </div>
       <div class="booking-box booking-5th">
-        <h2>選擇主餐</h2>
-        <label>牛排<br/><input type="number" class="steak short" name="steak"  min="0" value="2"></label>
-        <label>魚排<br/><input type="number" class="fish short" name="fish"  min="0" value="3"></label>
+        <h3>選擇主餐</h3>
+        <label>牛排<br/><input type="number" class="steak short" name="steak"  min="0" value="0"></label>
+        <label>魚排<br/><input type="number" class="fish short" name="fish"  min="0" value="0"></label>
         <label>雞排<br/><input type="number" class="chicken short" name="chicken"  min="0" value="0"></label><br/>
         <input type="button" class="AJAXbtn" value="訂位">
       </div>
@@ -50,5 +50,9 @@
     </form>
   </main>
 <script type='text/javascript' src='calendar.js'></script>
+  <article>
+    <h2>訂位列表<br><label>輸入手機查詢訂位<input type="text" class="search"><input type="button" value="查詢" class="goto-search"></label></h2>
+    <ul></ul>
+  </article>
 </body>
 </html>
